@@ -21,7 +21,7 @@ pipeline {
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-cred', url: 'https://github.com/sadokkhemila/jenkins-maven.git']]])
 
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh "mvn -DskipTests=true clean install"
                 
             }
         }
